@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/topnav.css') }}">
+    {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+    {% block stylesheets %}
+        {#{{ encore_entry_link_tags('app') }}#}
+    {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <script type="text/javascript">
+        function hide(id) {
+            var e = document.getElementById(id);
+            e.style.display = 'none';
+        }
+    </script>
+    {% block javascripts %}
+        {#{{ encore_entry_script_tags('app') }}#}
+    {% endblock %}
+</head>
+<body>
+<div class="topnav">
+    <a class="active" href="{{ path('main_page') }}">Home</a>
+    <a class="darkish" href="{{ path('recipe_new') }}">new recipe</a>
+    {% if app.user %}
+        {% if "admin" in app.user.getRoles %}
+            <a class="dark" href="{{ path('category_list') }}">categories</a>
+        {% endif %}
+        <span class="darker">user: {{ app.user.getUsername}}</span>
+        <a class="dark" href="{#{ path('app_logout') }#}">logout</a>
+    {% else %}
+        <a class="darker" href="{#{ path('app_login') }#}">login</a>
+        <a class="dark" href="{#{ path('app_register') }#}">register</a>
+    {% endif %}
+</div>
+{% block body %}{% endblock %}
+{% for key, message in app.flashes('success') %}
+    <div id="{{  "sucess" ~  key }}" onclick="hide('{{ "sucess" ~  key }}')" class="error-box alert alert-success">
+        {{message }}
+    </div>
+{% endfor %}
+{% for key, message in app.flashes('danger') %}
+    <div id="{{  "danger" ~  key }}" onclick="hide('{{ "danger" ~  key }}')" class="error-box alert alert-danger">
+        {{ message }}
+    </div>
+{% endfor %}
+</body>
 </html>
