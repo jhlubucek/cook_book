@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\RecipeHasIngredientRepository;
+use App\Repository\ListHasIngredientRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=RecipeHasIngredientRepository::class)
  */
-class RecipeHasIngredient
+class ListHasIngredient
 {
     /**
      * @ORM\Id
@@ -25,7 +25,7 @@ class RecipeHasIngredient
     /**
      * @ORM\Column(type="integer")
      */
-    private $ingredient_id;
+    private $ingredient_list_id;
 
     /**
      * @ORM\Column(type="integer")
@@ -54,14 +54,14 @@ class RecipeHasIngredient
         return $this;
     }
 
-    public function getIngredientId(): ?int
+    public function getIngredientListId(): ?int
     {
-        return $this->ingredient_id;
+        return $this->ingredient_list_id;
     }
 
-    public function setIngredientId(int $ingredient_id): self
+    public function setIngredientListId(int $ingredient_list_id): self
     {
-        $this->ingredient_id = $ingredient_id;
+        $this->ingredient_list_id = $ingredient_list_id;
 
         return $this;
     }

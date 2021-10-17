@@ -28,3 +28,4 @@ WORKDIR /var/www/html/app
 
 COPY ./php.ini /usr/local/etc/php/
 RUN chown -R www-data:www-data /var/www/html/
+RUN cd app && composer install

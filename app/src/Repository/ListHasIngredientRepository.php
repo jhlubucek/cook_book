@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\RecipeHasIngredient;
+use App\Entity\ListHasIngredient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method RecipeHasIngredient|null find($id, $lockMode = null, $lockVersion = null)
- * @method RecipeHasIngredient|null findOneBy(array $criteria, array $orderBy = null)
- * @method RecipeHasIngredient[]    findAll()
- * @method RecipeHasIngredient[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ListHasIngredient|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ListHasIngredient|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ListHasIngredient[]    findAll()
+ * @method ListHasIngredient[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RecipeHasIngredientRepository extends ServiceEntityRepository
+class ListHasIngredientRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, RecipeHasIngredient::class);
+        parent::__construct($registry, ListHasIngredient::class);
     }
 
     // /**

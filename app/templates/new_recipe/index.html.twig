@@ -4,6 +4,22 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/recipe-form.css') }}">
+
+    <script>
+        var $button = $('#xyz');
+
+        $button.click(function() {
+            var $form = $(this).closest('form');
+            $.ajax({
+                url: $form.attr('action'),
+                type: $form.attr('method'),
+                success: function(html) {
+                    console.log(html);
+                    $('#xyz').replaceWith($(html).find('#lang_switcher'));
+                }
+            });
+        });
+    </script>
 {% endblock %}
 {% block body %}
 
@@ -13,6 +29,7 @@
     </div>
     <div style="background: #d9d9d1">
         <div class="example-wrapper content-blok">
+            {{ form(form) }}
         </div>
     </div>
 
