@@ -7,8 +7,25 @@ namespace App\Entity\Template;
 class IngredientListTemplate
 {
     private $id;
+    private $temporaryId;
     private $name;
     private $recipe_id;
+
+    /**
+     * @return mixed
+     */
+    public function getTemporaryId()
+    {
+        return $this->temporaryId;
+    }
+
+    /**
+     * @param mixed $temporaryId
+     */
+    public function setTemporaryId($temporaryId): void
+    {
+        $this->temporaryId = $temporaryId;
+    }
 
     /**
      * @return mixed

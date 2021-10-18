@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\RecipeTemplate;
+use App\Entity\Template\RecipeTemplate;
 use App\Form\RecipeFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
