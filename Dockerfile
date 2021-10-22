@@ -1,4 +1,4 @@
-FROM php:7.3.0-apache
+FROM php:7.4.0-apache
 MAINTAINER jan hlubucek <jhlubucek@jhlubucek.cz>
 
 
@@ -28,4 +28,4 @@ WORKDIR /var/www/html/app
 
 COPY ./php.ini /usr/local/etc/php/
 RUN chown -R www-data:www-data /var/www/html/
-RUN cd app && composer install
+# RUN cd app && composer install
