@@ -6,6 +6,13 @@ RUN apt-get update
 RUN apt-get install -y git libzip-dev unzip
 RUN a2enmod rewrite headers
 
+# ============== nodejs npm
+# RUN apt-get update && apt-get install -y wget gnupg g++ locales unzip dialog apt-utils git && apt-get clean
+
+# RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+# RUN apt-get update && apt-get install -y nodejs npm && apt-get clean
+# RUN apt-get install -y  npm && apt-get clean
+
 #=============mysql
 RUN docker-php-ext-install zip mysqli pdo pdo_mysql
 
